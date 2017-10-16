@@ -1,10 +1,9 @@
 #!/bin/bash
 
 #
-# Jira Ticket details
+# To Get Commits information of an Jira issue using REST API and Write it into Json
 #
 
-# CURL command to get User tickets 
 JIRA_HOST=$1
 JIRA_USER=$2
 JIRA_PWD=$3
@@ -44,7 +43,7 @@ if [ -z "$MAX_RESULTS" ]; then
   usage;
 fi
 
-java -jar "$JSON_PATH\\$JARNAME.jar" $JIRA_HOST $JIRA_USER $JIRA_PWD $JIRA_USER_SERACH $START_AT $MAX_RESULTS $JSON_PATH $JSON_FILE_NAME &&
+java -jar "$JSON_PATH/$JARNAME.jar" $JIRA_HOST $JIRA_USER $JIRA_PWD $JIRA_USER_SERACH $START_AT $MAX_RESULTS $JSON_PATH $JSON_FILE_NAME &&
 
 echo "JIRA REST API done..."
 
@@ -57,9 +56,12 @@ then
 do 
     echo "$KEY-$ID"
 	#Working CURL to get Jira Ticket Dev status
+	#applicationType is either "bitbucket | github"
+	#issueId is the issueId of the Jira key.
 	URL="${JIRA_HOST}/rest/dev-status/1.0/issue/detail?applicationType=bitbucket&dataType=repository&issueId=${ID}"
 	FILENAME="$KEY-$ID.json"
 	echo "${URL}"
+	# Basic Authentication. You can use headers and session tokens if required.
 	curl -u $JIRA_USER:$JIRA_PWD ${URL%$'\r'} >> $FILENAME
 done < $JSON_FILE_NAME
 echo "DONEEEEEE....."
