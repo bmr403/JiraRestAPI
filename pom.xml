@@ -1,23 +1,38 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>JiraRestAPIJson</groupId>
-  <artifactId>JiraRestAPIJson</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <dependencies>
-	
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JiraRestAPIJson</groupId>
+	<artifactId>JiraRestAPIJson</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/com.atlassian.jira/jira-rest-java-client-api -->
 		<dependency>
-			<groupId>org.openengsb.wrapped</groupId>
+			<groupId>com.atlassian.jira</groupId>
 			<artifactId>jira-rest-java-client-api</artifactId>
-			<version>2.0.0-m32.w1</version>
-			<scope>provided</scope>
+			<version>4.0.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atlassian.jira/jira-rest-java-client-core -->
 		<dependency>
-			<groupId>org.openengsb.wrapped</groupId>
+			<groupId>com.atlassian.jira</groupId>
 			<artifactId>jira-rest-java-client-core</artifactId>
-			<version>2.0.0-m32.w1</version>
-			<scope>provided</scope>
+			<version>4.0.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.atlassian.fugue</groupId>
+			<artifactId>fugue</artifactId>
+			<version>2.6.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>
@@ -34,18 +49,34 @@
 		</dependency>
 
 	</dependencies>
-  
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.5.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+	<repositories>
+		<repository>
+			<id>atlassian-public</id>
+			<url>https://maven.atlassian.com/repository/public</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+		</repository>
+	</repositories>
 </project>
