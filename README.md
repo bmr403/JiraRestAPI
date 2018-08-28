@@ -1,5 +1,5 @@
 # JiraRestAPI
-To Get Commits information of an Jira issue using REST API and Write it into Json.
+Performs the issue transition with transition id along with adding comment for the ticket.
 
 This code will pull the assigned tickets of the specified user in Jira.
   It will return the Jira key and issue ID. The results may be usefull for future reference for reporting.
