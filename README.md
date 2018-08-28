@@ -1,10 +1,12 @@
 # JiraRestAPI
-To Get Commits information of an Jira issue using REST API and Write it into Json.
+Performs the issue transition with transition id along with adding comment for the ticket.
 
-This code will pull the assigned tickets of the specified user in Jira.
-  It will return the Jira key and issue ID. The results may be usefull for future reference for reporting.
-  
-To Pull the commits of specifed Jira issue changes made by developers. 
-We can use this API to get the issueId and pass the issue id to the provided "CURL" command to get all the onformation of JIRA Commits on the reposotory as JSON.
+This code will pull the tickets of the specified unique label and chnage the status to the transition which you specified.
 
-Just run the "JiraRestAPIData.sh" file and make the Jar and dependencies availiable before running. Pass the arguments to the script. It will give you all the commits happened on the specified Jira ticket.
+Clone the development branch and create runnanble JAR using eclipse and select UpdateJiraTicketStatusWithComment as main class to run the project.
+
+Just run the "UpdateJiraTicketStatus.sh" file and make the Runnable Jar next to the script file and dependencies availiable before running. Pass the arguments to the script as requested JIRA_HOST JIRA_USER JIRA_PWD PROJECT_NAME UNIQUE_LABEL TRANSISTION_ID.
+
+This script will move the tickets into current status to TRANSITION STATUS which TRANSITION ID* you mentioned as arguments.
+
+NOTE: You may get 404 or permission issues, please check the current ticket status have the permission to move into specified transition. 
