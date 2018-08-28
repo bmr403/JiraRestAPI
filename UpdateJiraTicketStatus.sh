@@ -5,7 +5,7 @@
 
 JIRA_HOST=$1
 JIRA_USER=$2
-JIRA_PWD=$3
+JIRA_API_TOKEN=$3
 PROJECT_NAME=$4
 UNIQUE_LABEL=$5
 TRANSISTION_ID=$6
@@ -13,7 +13,7 @@ JAR_PATH=`pwd`
 JARNAME=UpdateJiraTicketStatusWithComment
 
 usage() {
-  echo "Usage: $0 JIRA_HOST JIRA_USER JIRA_PWD PROJECT_NAME UNIQUE_LABEL TRANSISTION_ID"
+  echo "Usage: $0 JIRA_HOST JIRA_USER JIRA_API_TOKEN PROJECT_NAME UNIQUE_LABEL TRANSISTION_ID"
   exit 1
 }
 
@@ -25,7 +25,7 @@ if [ -z "$JIRA_USER" ]; then
   usage;
 fi
 
-if [ -z "$JIRA_PWD" ]; then 
+if [ -z "$JIRA_API_TOKEN" ]; then 
   usage;
 fi
 
@@ -41,6 +41,6 @@ if [ -z "$TRANSISTION_ID" ]; then
   usage;
 fi
 
-java -jar "$JAR_PATH/$JARNAME.jar" $JIRA_HOST $JIRA_USER $JIRA_PWD $PROJECT_NAME $UNIQUE_LABEL $TRANSISTION_ID &&
+java -jar "$JAR_PATH/$JARNAME.jar" $JIRA_HOST $JIRA_USER $JIRA_API_TOKEN $PROJECT_NAME $UNIQUE_LABEL $TRANSISTION_ID &&
 
 echo "JIRA REST API Changing status was COMPLETED..."
