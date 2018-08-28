@@ -39,7 +39,7 @@ public class UpdateJiraTicketStatusWithComment {
 				JIRA_ADMIN_USERNAME = args[1];
 				JIRA_ADMIN_PASSWORD = args[2];
 				PROJECT_NAME = args[3];
-				UNIQUE_LABEL = args[4];
+				UNIQUE_LABEL = args[4].toString();
 				TRANSISTION_ID = Integer.parseInt(args[5]);
 				
 				// Construct the JRJC client
